@@ -76,15 +76,23 @@
                     <a class="dropdown-item" href="#">CPVC PRO</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Pex-a PRO</a>
-                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-divider"></div> 
                     <a class="dropdown-item" href="#">Aquarius</a>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="login.php"><i class="fa fa-sign-in-alt"></i> Sign in</a>
+            <?php if (isset($_SESSION['email'])) { ?>
+                <a class="nav-link" href="signup.php"><i class="fas fa-user-circle"></i> Profile</a>
+                <?php } else { ?>
+                <a class="nav-link" href="signup.php"><i class="fas fa-user-edit"></i> Sign Up</a>
+                <?php } ?>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="signup.php"><i class="fas fa-sign-out-alt"></i> Sign Up</a>
+                <?php if (isset($_SESSION['email'])) { ?>
+                    <a class="nav-link" href="logout.php"><i class="fa fa-sign-out-alt"></i> Sign out</a>
+                <?php } else { ?>
+                    <a class="nav-link" href="login.php"><i class="fa fa-sign-in-alt"></i> Sign in</a>
+                <?php } ?>
             </li>
         </ul>
         <ul class="nav justify-content-end">

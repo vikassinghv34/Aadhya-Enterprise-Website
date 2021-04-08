@@ -1,4 +1,6 @@
-<?php include('header.php'); ?>
+<?php
+session_start();
+include('header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,11 +58,27 @@
       color: white;
       font-size: 2vw;
     }
+
+    .container a {
+      text-decoration: none;
+    }
   </style>
 </head>
 
 <body>
   <div class="container-fluid mt-2">
+    <div class="header">
+      <?php
+      if (isset($_SESSION['email'])) {
+      ?>
+        <h1><strong>Welcome
+            <!--#display doner's name using session --><span style="text-transform: uppercase;"><?php echo $_SESSION["name"]; ?></span>
+          </strong></h1>
+      <?php
+      }
+       else echo "<h6>Please login first .</h6>";
+      ?>
+    </div>
     <div id="demo" class="carousel slide" data-ride="carousel">
 
       <!-- Indicators -->
@@ -121,22 +139,26 @@
   <section id="products" class="products">
     <h1 align="center" style="margin: 10px; color:#0297e0; margin-top:3%; margin-bottom:3%;"><strong><u>Products</u></strong></h1>
     <div class="container mb-3" style="display: grid; grid-template-columns:repeat(3,minmax(20%,1fr)); gap:0.3em;">
-      <div class="d-flex" style="background-color:#0060ae;">
-        <div class="p-2">
-          <img src="https://www.astralpipes.com/assets/images/anim-icon1.gif" alt="loading" height="" width="100%">
+      <a href="product.php">
+        <div class="d-flex" style="background-color:#0060ae;">
+          <div class="p-2">
+            <img src="https://www.astralpipes.com/assets/images/anim-icon1.gif" alt="loading" height="" width="100%">
+          </div>
+          <div class="p-2">
+            <h2>Plumbing</h2>
+          </div>
         </div>
-        <div class="p-2">
-          <h2>Plumbing</h2>
+      </a>
+      <a href="product.php">
+        <div class="d-flex" style="background-color:#0046ae;">
+          <div class="p-2">
+            <img src="https://www.astralpipes.com/assets/images/anim-icon2.gif" alt="loading" height="" width="100%">
+          </div>
+          <div class="p-2">
+            <h2>Industrial</h2>
+          </div>
         </div>
-      </div>
-      <div class="d-flex" style="background-color:#0046ae;">
-        <div class="p-2">
-          <img src="https://www.astralpipes.com/assets/images/anim-icon2.gif" alt="loading" height="" width="100%">
-        </div>
-        <div class="p-2">
-          <h2>Industrial</h2>
-        </div>
-      </div>
+      </a>
       <div class="d-flex" style="background-color:#0096ff;">
         <div class="p-2">
           <img src="https://www.astralpipes.com/assets/images/anim-icon3.gif" alt="loading" height="" width="100%">
@@ -232,10 +254,8 @@
               </div>
             </div>
             <div class="carousel-caption" style="color: black; font-weight:bolder">
-
               <h3><strong>Industrial</strong></h3>
               <p>Pipes & Fitting</p>
-
             </div>
           </div>
           <div class="carousel-item">

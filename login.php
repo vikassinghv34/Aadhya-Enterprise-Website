@@ -1,5 +1,38 @@
 <?php
+session_start();
 include("header.php");
+$message = "";
+if (count($_POST) > 0) {
+
+    require('conn.php');
+    // $password = md5($_POST['pwd']);
+    $username=$_POST['mail'];
+    $password = $_POST['pwd'];
+    $username = mysqli_real_escape_string($conn, $username);
+    $password = mysqli_real_escape_string($conn, $password);
+    $sql = "SELECT * FROM users WHERE UserEmail='$username' AND UserPassword='$password'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) == 1) {
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['id']=$row['UserId'];
+        $_SESSION['email']=$row['UserEmail'];
+        $_SESSION['name']=$row['UserFirstName'];
+        header('Location:home.php');
+    }
+
+
+    // $row=mysqli_fetch_array($result);
+    // if(is_array($row))
+    // {
+    //     // $_SESSION['ID']=$row['id'];
+    // $_SESSION['user']=$row['mail'];
+    // $_SESSION['Name']=$row['name'];
+    //$_SESSION['type']=$row['type'];
+    // }
+    else {
+        $message = "invalid username or password";
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -35,16 +68,21 @@ include("header.php");
             <!--here we can set height and padding of container.-->
             <h2><strong><u>Login Form</u></strong></h2>
             <hr>
-            <form action="/action_page.php" class="needs-validation" novalidate>
+            <form action="" method="POST" class="needs-validation" novalidate>
+            <div class="message" style="color: red; font-weight:bold;">
+                            <?php if ($message != "") {
+                                echo $message;
+                            } ?>
+                        </div>
                 <div class="form-group">
                     <label for="uname">E-mail:</label>
-                    <input type="text" class="form-control" id="mail" pattern="^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*$" placeholder="Enter username" name="mail" required>
+                    <input type="text" class="form-control" id="mail" pattern="^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*$" placeholder="Enter username" name="mail" required autofocus> 
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please enter valid Input.</div>
                 </div>
                 <div class="form-group">
                     <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd" pattern="(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*,.]{8,15}$" placeholder="Enter password" name="pswd" required>
+                    <input type="password" class="form-control" id="pwd" pattern="(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*,.]{8,15}$" placeholder="Enter password" name="pwd" required>
                     <small>Password must have 7 to 15 characters which contain at least one numeric digit and a special character.</small>
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please enter valid Password.</div>

@@ -6,20 +6,16 @@
   <title>CONTACT US</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 <body style="background-color: lightgray;">
-  <div class="container" style="height:40rem; padding:40px">
+  <div class="container bg-light mt-5 mb-5" style="height:40rem; padding:40px; border-radius:25px;">
     <h2><strong><u>Contact Us</u></strong></h2>
     <hr>
     <form action="/action_page.php" class="needs-validation" novalidate>
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="text" class="form-control" id="email" pattern="^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*$" placeholder="Enter Email" name="email" required>
+        <input type="text" class="form-control" id="email" pattern="^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*$" placeholder="Enter Email" name="email" required autofocus>
         <div class="valid-feedback">Valid.</div>
         <div class="invalid-feedback">Please enter valid E-mail address.</div>
       </div>
