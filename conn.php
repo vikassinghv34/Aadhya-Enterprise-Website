@@ -1,5 +1,4 @@
 <?php
-
 $server="localhost";
 $username="root";
 $password="";
@@ -15,5 +14,4 @@ else
 {
     return $conn;
 }
-
 ?>

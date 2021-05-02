@@ -1,4 +1,5 @@
-<?php include('header.php'); ?>
+<?php
+include('header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,8 +8,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<style>
+      .path a:hover {
+      color: black;
+      text-decoration: none;
+    }
 
+    .path a {
+      color: gray;
+    }
+
+    .path .less {
+      color: gray;
+      font-weight: bolder;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+</style>
 <body style="background-color: lightgray;">
+<div class="container-fluid path">
+    <a href="home.php">Home</a> <label for="" class="less">></label>
+    <a href="contact.php">Contact US</a>
+  </div>
   <div class="container bg-light mt-5 mb-5" style="height:40rem; padding:40px; border-radius:25px;">
     <h2><strong><u>Contact Us</u></strong></h2>
     <hr>

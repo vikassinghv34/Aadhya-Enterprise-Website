@@ -103,31 +103,31 @@
 
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a href="#!" class="text-light">Plumbing</a>
+                            <a href="products.php?ProductCategoryID=1" class="text-light">Plumbing</a>
                         </li>
                         <li>
-                            <a href="#!" class="text-light">Sewarage & Drainage</a>
+                            <a href="products.php?ProductCategoryID=5" class="text-light">Sewarage & Drainage</a>
                         </li>
                         <li>
-                            <a href="#!" class="text-light">Agricultural</a>
+                            <a href="products.php?ProductCategoryID=3" class="text-light">Agricultural</a>
                         </li>
                         <li>
-                            <a href="#!" class="text-light">Surface Drainage</a>
+                            <a href="products.php?ProductCategoryID=4" class="text-light">Surface Drainage</a>
                         </li>
                         <li>
-                            <a href="#!" class="text-light">Industrial</a>
+                            <a href="products.php?ProductCategoryID=2" class="text-light">Industrial</a>
                         </li>
                         <li>
-                            <a href="#!" class="text-light">Fire Protection</a>
+                            <a href="products.php?ProductCategoryID=6" class="text-light">Fire Protection</a>
                         </li>
                         <li>
-                            <a href="#!" class="text-light">Cable Protection</a>
+                            <a href="products.php?ProductCategoryID=8" class="text-light">Cable Protection</a>
                         </li>
                         <li>
-                            <a href="#!" class="text-light">Urban Infrastructure</a>
+                            <a href="products.php?ProductCategoryID=9" class="text-light">Urban Infrastructure</a>
                         </li>
                         <li>
-                            <a href="#!" class="text-light">Insulation</a>
+                            <a href="products.php?ProductCategoryID=7" class="text-light">Insulation</a>
                         </li>
                     </ul>
                 </div>
@@ -135,21 +135,21 @@
 
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase mb-0">Links</h5>
+                    <h5 class="text-uppercase mb-0">Vendors</h5>
 
                     <ul class="list-unstyled">
                         <li>
-                            <p href="#!" class="text-light">Link 1</p>
+                            <a href="https://www.finolexpipes.com" class="text-light">Finolex Industries</a>
                         </li>
                         <li>
-                            <p href="#!" class="text-light">Link 2</p>
+                            <a href="https://www.astralpipes.com" class="text-light">Astral Pipes Pvt Ltd.</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <p href="#!" class="text-light">Link 3</p>
                         </li>
                         <li>
                             <p href="#!" class="text-light">Link 4</p>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
                 <!--Grid column-->
@@ -160,7 +160,7 @@
 
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a href="#!" class="text-light">About Us</a>
+                            <a href="about.php" class="text-light">About Us</a>
                         </li>
                         <li>
                             <a href="#products" class="text-light">Type of Pipes</a>

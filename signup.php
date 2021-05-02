@@ -1,5 +1,4 @@
 <?php
-session_start();
 include("header.php");
 
 // error_reporting(0);
@@ -15,33 +14,58 @@ if (isset($_POST['signup'])) {
     $password = mysqli_real_escape_string($conn, $_POST['pwd']);
     $cpassword = mysqli_real_escape_string($conn, $_POST['rpwd']);
 
-    $error = "";
-    if ($password != $cpassword) {
-        $error = "Password and Confirm Password doesn't match";
-    }
-    if (!$error) {
-        $res = mysqli_query($conn, "SELECT UserEmail,UserPhone FROM users WHERE UserEmail='$email' AND UserPhone='$phone'");
-        $row = mysqli_fetch_array($res);
+    $token = bin2hex(random_bytes(15));
+
+    // $error = "";
+
+    // if (!$error) {
+    $res = mysqli_query($conn, "SELECT UserEmail,UserPhone FROM users WHERE UserEmail='$email' OR UserPhone='$phone'");
+    $row = mysqli_num_rows($res);
 
 
-        if ($row['UserPhone'] > 0) {
-            $message = "Phone or Email number is already taken";
-            // } else if ($row['mail'] > 0) {
-            //     $message = "Email is already taken";
-        } else {
-            if (mysqli_query($conn, "INSERT INTO users(UserFirstName,UserLastName, UserPhone, UserEmail,UserPassword) VALUES('" . $fname . "','" . $lname . "', '" . $phone . "', '" . $email . "','" . $password . "')")) {
-                echo "<script>alert('something gone wrong');</script>";
-                header("location:login.php");
+    if ($row > 0) {
+        $message = "Phone number or Email Address is already exists";
+        // } else if ($row['mail'] > 0) {
+        //     $message = "Email is already taken";
+        // exit();
+    } else {
+        if ($password === $cpassword) {
+
+            $sql = "INSERT INTO users(UserFirstName,UserLastName, UserPhone, UserEmail,UserPassword,UserVerificationCode,UserEmailVerified) VALUES('" . $fname . "','" . $lname . "', '" . $phone . "', '" . $email . "','" . $password . "','" . $token . "','inactive')";
+
+            $query = mysqli_query($conn, $sql);
+
+            if ($query) {
+
+                $subject = "Email Activation";
+                $body = "Hi, $fname. Click here to activate your account http://localhost/code/SEM%206/testing/bs4/activate.php?token=$token";
+                $sender_email = "From: palak.chauhan0711@gmail.com";
+
+                if (mail($email, $subject, $body, $sender_email)) {
+                    $_SESSION['msg'] = "Check your email to activate your account $email";
+                    // header("location:login.php");
+?>
+                    <script>
+                        location.replace("login.php");
+                    </script>
+<?php
+                } else {
+                    echo "Email sending failed..";
+                }
+
                 exit();
             } else {
                 echo "Error: " . $sql . "" . mysqli_error($conn);
             }
+        } else {
+            $message = "Password and Confirm Password doesn't match";
         }
-        mysqli_close($conn);
     }
-    // header("location:#");
-    // echo "<script>alert('something gone wrong');</script>";
+    mysqli_close($conn);
 }
+// header("location:#");
+// echo "<script>alert('something gone wrong');</script>";
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +73,7 @@ if (isset($_POST['signup'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SignUp</title>
 </head>
 <style>
     * {
@@ -61,18 +85,35 @@ if (isset($_POST['signup'])) {
         padding: 0;
         margin: 0;
     }
+
+    .path a:hover {
+        color: black;
+        text-decoration: none;
+    }
+
+    .path a {
+        color: gray;
+    }
+
+    .path .less {
+        color: gray;
+        font-weight: bolder;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
 </style>
 
 <body style="background-color: lightgray;">
+    <div class="container-fluid path">
+        <a href="home.php">Home</a> <label for="" class="less">></label>
+        <a href="signup.php">Registration </a>
+    </div>
     <div class="container bg-light mt-5 mb-5" style="height:auto; padding:40px; border-radius:25px;">
         <!--here we can set height and padding of container.-->
         <h2><strong><u>Registration Form</u></strong></h2>
         <hr>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="needs-validation" novalidate>
             <div class="text-danger" style="font-weight:bold; color:red;">
-                <?php if (isset($error)) {
-                    echo $error;
-                } ?>
+
                 <?php if (isset($message)) {
                     echo $message;
                 } ?>
@@ -106,11 +147,6 @@ if (isset($_POST['signup'])) {
                 <div class="valid-feedback">Valid.</div>
                 <div class="invalid-feedback">Please enter valid E-mail address.</div>
             </div>
-            <!-- <div class="text-danger" style="font-weight:bold; color:red;">
-                 //(isset($message)) {
-                    //echo $message;
-               // }
-            </div> -->
             <div class="form-group">
                 <label for="pwd">Password:</label>
                 <input type="password" id="pwd" class="form-control" aria-describedby="passwordHelpBlock" pattern="(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*,.]{8,15}$" placeholder="Enter Password" name="pwd" required>

@@ -1,11 +1,11 @@
 <?php
-session_start();
+// session_start();
 include('header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <title>Bootstrap Example</title>
+  <title>Home</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -71,12 +71,11 @@ include('header.php'); ?>
       <?php
       if (isset($_SESSION['email'])) {
       ?>
-        <h1><strong>Welcome
-            <!--#display doner's name using session --><span style="text-transform: uppercase;"><?php echo $_SESSION["name"]; ?></span>
-          </strong></h1>
+        <h3><strong>Welcome
+            <!--#display doner's name using session --><span style="text-transform: uppercase;"><?php echo $_SESSION['name']; ?></span>
+          </strong></h3>
       <?php
-      }
-       else echo "<h6>Please login first .</h6>";
+      } else echo "<h6>Please login first .</h6>";
       ?>
     </div>
     <div id="demo" class="carousel slide" data-ride="carousel">
@@ -112,25 +111,25 @@ include('header.php'); ?>
   </div>
   <!-- what define astral -->
   <div class="container" style="height: auto;">
-    <h1 align="center" style="margin: 10px;  margin-top:3%; margin-bottom:3%; color:#0297e0;"><strong><u>What define Astral</u></strong></h1>
+    <h1 align="center" style="margin: 10px;  margin-top:3%; margin-bottom:3%; color:#0297e0;"><strong><u>What Define Us</u></strong></h1>
     <div class="card-deck" style="margin-bottom: 5px; margin-top:5px;">
       <div class="card bg-primary">
         <div class="card-body text-center">
           <h2 class="card-header"><strong>Quality</strong></h2>
-          <p class="card-text">ASTRAL constantly strives to upgrade processes and materials, incorporating international developments in the plumbing industry to benefit the customers.</p>
+          <p class="card-text">We constantly strives to upgrade processes and materials, incorporating international developments in the plumbing industry to benefit the customers.</p>
         </div>
       </div>
       <div class="card bg-warning">
         <div class="card-body text-center">
           <h2 class="card-header"><strong>Trust</strong></h2>
           <p class="card-text">Trust
-            ASTRAL aims to achieve the vision of earning consumers’ trust and delight. Astral has been operational in India since 1996, striving to serve consumers to the best of their abilities.</p>
+            We aims to achieve the vision of earning consumers’ trust and delight. Astral has been operational in India since 1996, striving to serve consumers to the best of their abilities.</p>
         </div>
       </div>
       <div class="card bg-success">
         <div class="card-body text-center">
           <h2 class="card-header"><strong>Innovation</strong></h2>
-          <p class="card-text">ASTRAL offers innovative product designs, created using extensive industry know-how coupled with the latest technology to assure world-class quality.</p>
+          <p class="card-text">We offers innovative product designs, created using extensive industry know-how coupled with the latest technology to assure world-class quality.</p>
         </div>
       </div>
     </div>
@@ -139,78 +138,95 @@ include('header.php'); ?>
   <section id="products" class="products">
     <h1 align="center" style="margin: 10px; color:#0297e0; margin-top:3%; margin-bottom:3%;"><strong><u>Products</u></strong></h1>
     <div class="container mb-3" style="display: grid; grid-template-columns:repeat(3,minmax(20%,1fr)); gap:0.3em;">
-      <a href="product.php">
+      <a href="products.php?ProductCategoryID=1">
         <div class="d-flex" style="background-color:#0060ae;">
           <div class="p-2">
-            <img src="https://www.astralpipes.com/assets/images/anim-icon1.gif" alt="loading" height="" width="100%">
+            <img src="../gif/anim-icon1.gif" alt="loading" height="" width="100%">
           </div>
           <div class="p-2">
             <h2>Plumbing</h2>
           </div>
         </div>
       </a>
-      <a href="product.php">
+      <a href="products.php?ProductCategoryID=2">
         <div class="d-flex" style="background-color:#0046ae;">
           <div class="p-2">
-            <img src="https://www.astralpipes.com/assets/images/anim-icon2.gif" alt="loading" height="" width="100%">
+            <img src="../gif/anim-icon2.gif" alt="loading" height="" width="100%">
           </div>
           <div class="p-2">
             <h2>Industrial</h2>
           </div>
         </div>
       </a>
-      <div class="d-flex" style="background-color:#0096ff;">
-        <div class="p-2">
-          <img src="https://www.astralpipes.com/assets/images/anim-icon3.gif" alt="loading" height="" width="100%">
+      <a href="products.php?ProductCategoryID=3">
+        <div class="d-flex" style="background-color:#0096ff;">
+          <div class="p-2">
+            <img src="../gif/anim-icon3.gif" alt="loading" height="" width="100%">
+          </div>
+          <div class="p-2">
+            <h2>Agricultural</h2>
+          </div>
         </div>
-        <div class="p-2">
-          <h2>Agricultural</h2>
+      </a>
+      <a href="products.php?ProductCategoryID=4">
+        <div class="d-flex" style="background-color:#126aee;">
+          <div class="p-3">
+            <img src="../gif/anim-icon4.gif" alt="loading" height="" width="100%">
+          </div>
+          <div class="p-2">
+            <h2>Surface Drainage</h2>
+          </div>
         </div>
-      </div>
-      <div class="d-flex" style="background-color:#126aee;">
-        <div class="p-2">
-          <img src="https://www.astralpipes.com/assets/images/anim-icon4.gif" alt="loading" height="" width="100%">
-        </div>
-        <div class="p-2">
-          <h2>Surface Drainage</h2>
-        </div>
-      </div>
+      </a>
       <div class="d-flex" style="background-color:#053987;">
-        <div class="p-2">
-          <img src="https://www.astralpipes.com/assets/images/anim-icon5.gif" alt="loading" height="" width="100%">
-        </div>
+        <a href="products.php?ProductCategoryID=5">
+          <div class="p-4">
+            <img src="../gif/anim-icon5.gif" alt="loading" height="" width="100%">
+          </div>
+        </a>
         <div class="p-2">
           <h2>Sewerage & Drainage</h2>
         </div>
+
       </div>
       <div class="d-flex" style="background-color:#00c0ff;">
-        <div class="p-2">
-          <img src="https://www.astralpipes.com/assets/images/anim-icon6.gif" alt="loading" height="" width="100%">
-        </div>
+        <a href="products.php?ProductCategoryID=6">
+          <div class="p-2">
+            <img src="../gif/anim-icon6.gif" alt="loading" height="" width="100%">
+          </div>
+        </a>
         <div class="p-2">
           <h2>Fire Protection</h2>
         </div>
       </div>
+
       <div class="d-flex" style="background-color:#0052cc;">
-        <div class="p-2">
-          <img src="https://www.astralpipes.com/assets/images/anim-icon7.gif" alt="loading" height="" width="100%">
-        </div>
+        <a href="products.php?ProductCategoryID=7">
+          <div class="p-2">
+            <img src="../gif/anim-icon7.gif" alt="loading" height="" width="100%">
+          </div>
+        </a>
         <div class="p-2">
           <h2>Insulation</h2>
         </div>
       </div>
+
       <div class="d-flex" style="background-color:#0c5692;">
-        <div class="p-2">
-          <img src="https://www.astralpipes.com/assets/images/anim-icon8.gif" alt="loading" height="" width="100%">
-        </div>
+        <a href="products.php?ProductCategoryID=8">
+          <div class="p-2">
+            <img src="../gif/anim-icon8.gif" alt="loading" height="" width="100%">
+          </div>
+        </a>
         <div class="p-2">
           <h2>Cable Protection</h2>
         </div>
       </div>
       <div class="d-flex" style="background-color:#0096ff;">
-        <div class="p-2">
-          <img src="https://www.astralpipes.com/assets/images/anim-icon9.gif" alt="loading" height="" width="100%">
-        </div>
+        <a href="products.php?ProductCategoryID=9">
+          <div class="p-2">
+            <img src="../gif/anim-icon9.gif" alt="loading" height="" width="100%">
+          </div>
+        </a>
         <div class="p-2">
           <h2>Urban Infrastructure</h2>
         </div>
