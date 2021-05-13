@@ -155,15 +155,8 @@
         </ul>
         
         <ul class="navbar-nav search-box">
-            <!-- <form class="navbar-form form-inline navbar-left" action="/action_page.php"> -->
                 <input class="form-control mr-sm-2" type="text" placeholder="Search products here...">
-                <!-- <button class="btn btn-success" type="submit">Search</button> -->
-                <?php if(isset($_SESSION["searchid"]))
-                { ?>
-                <div class="result" onclick="window.location='http://localhost/code/SEM%206/testing/bs4/item.php?ProductID=<?= $_SESSION['searchid'] ?>';"></div>
-                <?php }
-                // else echo '<script type="text/javascript">alert("something wrong");</script>';
-                ?>
+                <div class="result"></div>
             
             <!-- </form> -->
         </ul>

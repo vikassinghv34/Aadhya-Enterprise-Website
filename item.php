@@ -74,12 +74,12 @@ include_once('conn.php');
             return null;
         } else {
             $rowcount = $result->num_rows;
-            while ($pdts = $result->fetch_assoc()) {
+            $pdts = $result->fetch_assoc();
 
         ?>
                 <div class="row">
                     <div class="col-md-12" align="center">
-                        <img src="<?php echo $pdts["ProductImage"] ?>" alt="" width="80%">
+                        <img src="<?php echo $pdts["ProductImage"] ?>" style="height: 550px;" alt="" width="80%">
                     </div>
                 </div>
                 <div class="row">
@@ -92,15 +92,18 @@ include_once('conn.php');
                         <h4><i class="fas fa-rupee-sign"></i> <?php echo $pdts["ProductPrice"] ?></h4>
                     </div>
                 </div>
+                <form action="" method="post">
                 <div class="row">
                     <div class="col-md-12">
                         Quantity: <input type="number" name="quantity" id="quantity" placeholder="1" required />
                     </div>
                 </div>
+                
+                </form>
                 <div class="row">
                     <div class="col-md-12">
                         <a href="" onclick='addtocart("<?php echo $pdts["ProductID"] ?>","<?php echo $pdts["ProductQuantity"] ?>","<?php echo $pdts["ProductPrice"] ?>","<?php echo $pdts["ProductName"] ?>");' class="btn btn-primary">Add to Cart</a>
-                        <a href='#' class="btn btn-success">Buy Now</a>
+                        <a href='buy.php' class="btn btn-success">Buy Now</a>
                     </div>
                 </div>
                 <div id="accordion" class="mt-2" align="left">
@@ -118,15 +121,15 @@ include_once('conn.php');
                         </div>
                         <div id="collapseOne" class="collapse show" data-parent="#accordion">
                             <div class="card-body">
-                                <?php echo $pdts["ProductPrice"] ?>
+                                <?php echo $pdts["ProductCartDesc"] ?>
                             </div>
                         </div>
 
 
                         <div id="collapseTwo" class="collapse" data-parent="#accordion">
                             <div class="card-body">
-                                consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </div>
+                                <?php echo $pdts["ProductShortDesc"] ?>
+                        </div>
                         </div>
 
 
@@ -142,7 +145,7 @@ include_once('conn.php');
                 </div>
         <?php
             }
-        }
+        
         ?>
     </div>
 </body>

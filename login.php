@@ -86,13 +86,14 @@ if (isset($_POST['submit'])) {
       <h2><strong><u>Login Form</u></strong></h2>
       <hr>
       <div>
-        <p class="bg-success text-white px-4"><?php
-                                              if (isset($_SESSION['msg'])) {
-                                                echo $_SESSION['msg'];
-                                              } else {
-                                                $_SESSION['msg'] = "You are logged out, please login again";
-                                              }
-                                              ?>
+        <p class="bg-success text-white px-4">
+          <?php
+          if (isset($_SESSION['msg'])) {
+            echo $_SESSION['msg'];
+          } else {
+            $_SESSION['msg'] = "You are logged out, please login again";
+          }
+          ?>
         </p>
       </div>
       <form action="" method="POST" class="needs-validation" novalidate>
@@ -105,7 +106,7 @@ if (isset($_POST['submit'])) {
           <label for="uname">E-mail:</label>
           <input type="text" class="form-control" id="mail" pattern="^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*$" placeholder="Enter username" name="mail" required autofocus>
           <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback">Please enter valid Input.</div>
+          <div class="invalid-feedback">Please enter valid Email.</div>
         </div>
         <div class="form-group">
           <label for="pwd">Password:</label>
@@ -122,6 +123,8 @@ if (isset($_POST['submit'])) {
           </label>
         </div>
         <button type="submit" name="submit" class="btn btn-primary">Submit</button> <small>New Customer...? <a href="signup.php">Click here </a>to register yourself</small>
+        <br>
+        <small><a href="forgot.php">Forgot Password</a></small>
       </form>
     </div>
 

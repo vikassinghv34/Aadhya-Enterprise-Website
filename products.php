@@ -141,14 +141,13 @@ $sql="SELECT * FROM products";
       while ($pdts = $result->fetch_assoc()) {
     ?>
         <div class="card" id="<?php echo $pdts['ProductID']; ?>" style="width: 16rem; margin-bottom:15px;" onclick="window.location='http://localhost/code/SEM%206/testing/bs4/item.php?ProductID=<?= $pdts['ProductID'] ?>';">
-          <img class="card-img-top" src="<?php echo $pdts["ProductImage"] ?>" alt="Card image cap">
+          <img class="card-img-top" style="height: 150px;" src="<?php echo $pdts["ProductImage"] ?>" alt="Card image cap">
           <div class="card-body">
 
             <p class="card-text">Name: <?php echo $pdts["ProductName"] ?></p>
-            <p class="card-text">Quantity: <input type="text" class="quantity" id="qty" name="quantity" placeholder="1" size="4" /></p>
+            <!-- <p class="card-text">Quantity: <input type="text" class="quantity" id="qty" name="quantity" placeholder="1" size="4" /></p> -->
             <p class="card-text">Rate Per Unit: <?php echo $pdts["ProductPrice"] ?></br><div></div>
-            <a href="cart.php" onclick='addtocart("<?php echo $pdts["ProductID"] ?>","<?php echo $pdts["ProductQuantity"] ?>","<?php echo $pdts["ProductPrice"] ?>","<?php echo $pdts["ProductName"] ?>");' class="btn btn-primary">Add to Cart</a>
-            <a href='#' class="btn btn-success">Buy Now</a>
+            <a href="cart.php" onclick='addtocart("<?php echo $pdts["ProductID"] ?>","<?php echo $pdts["ProductQuantity"] ?>","<?php echo $pdts["ProductPrice"] ?>","<?php echo $pdts["ProductName"] ?>");' class="btn btn-primary" style="width:100%">Add to Cart</a>
           </div>
         </div>
     <?php

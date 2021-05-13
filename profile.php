@@ -63,20 +63,6 @@ include_once('conn.php');
                                 } else {
                                 ?>
                                     <div class="card-body">
-                                        <!-- <h3>Name : <span style="text-transform: uppercase;"> <?php //echo $pdts["UserFirstName"], $pdts["UserLastName"]; ?></span></h3>
-
-                                        <h3>Phone no. : <?php //echo $pdts["UserPhone"]; ?></h3>
-
-                                        <h3>Email id : <?php //echo $pdts["UserEmail"]; ?></h3>
-
-                                        <h3>Address : <?php //echo $pdts["UserAddress"]; ?><br><?php //echo $pdts["UserCity"] ?></h3>
-
-                                        <h3>Password : <?php //echo $pdts["UserPassword"]; ?></h3> -->
-
-
-
-
-
                                         <table class="table table-striped table-borderless text-darker text-25" >
                                             <tr>
                                                 <td>Name:</td><td style="text-transform: uppercase;"><?php echo $pdts["UserFirstName"]?> <?php echo $pdts["UserLastName"]; ?></td>

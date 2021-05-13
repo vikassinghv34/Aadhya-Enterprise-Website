@@ -1,6 +1,8 @@
-<?php session_start();
+<?php
 include('conn.php');
-if(isset($_REQUEST["term"])){
+$term=$_REQUEST["term"];
+$length=3;
+if(isset($_REQUEST["term"]) && strlen($term)>=$length){
     // Prepare a select statement
     $sql = "SELECT * FROM products WHERE ProductName LIKE ?";
     
@@ -19,8 +21,9 @@ if(isset($_REQUEST["term"])){
             if(mysqli_num_rows($result) > 0){
                 // Fetch result rows as an associative array
                 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                    echo "<p>" . $row["ProductName"],$row["ProductID"] . "</p>";
-					$_SESSION['searchid']=$row["ProductID"];
+                    // echo "<p>" . $row["ProductName"],$row["ProductID"] . "</p>";
+                    ?> <p onClick="window.location='http://localhost/code/SEM%206/testing/bs4/item.php?ProductID=<?= $row["ProductID"]?>'"> <?php echo $row["ProductName"],$row["ProductID"] ?> </p><?php
+					// $_SESSION['searchid']=$row["ProductID"];
                 }
             } else{
                 echo "<p>No matches found</p>";
