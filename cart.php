@@ -8,22 +8,7 @@ include('conn.php'); ?>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
-<!-- <script>
-	function event1(id){
-		try{
-        fetch("cartitemdelete.php?id="+id).then(function(respone)
-        {
-          if(respone.ok){
-            console.log('done');
-          }
-          console.log(id);
-        });
-      }
-      catch(id){
-        console.log(id);
-      }
-	}
-</script> -->
+
 <style>
 	.cart-header {
 		width: 25%;
@@ -106,7 +91,7 @@ include('conn.php'); ?>
 										<td class="col-3">
 											<a class="col-1" href='cartitemdelete.php?id=<?php echo $pdts["ProductID"]; ?>'>Remove</a>
 											<a class="col-1" href='cartitemedit.php?id=<?php echo $pdts["ProductID"]; ?>'>Update</a>
-											<button class="btn btn-success" type="submit">Buy Now</button>
+											<button class="btn btn-success" onclick="window.location='http://localhost/code/SEM%206/testing/bs4/buy.php?ProductID=<?= $pdts['ProductID']; ?>'" type="submit">Buy Now</button>
 										</td>
 
 									</tr>
@@ -123,7 +108,7 @@ include('conn.php'); ?>
 										<td class="col-3">
 											<a class="col-1" href='cartitemdelete.php?id=<?php echo $pdts["ProductID"]; ?>'>Remove</a>
 											<a class="col-1" href='cartitemedit.php?id=<?php echo $pdts["ProductID"]; ?>'>Update</a>
-											<button class="btn btn-success" type="submit">Buy Now</button>
+											<button class="btn btn-success" onclick="window.location='http://localhost/code/SEM%206/testing/bs4/buy.php?ProductID=<?= $pdts['ProductID']; ?>'" type="submit">Buy Now</button>
 
 										</td>
 									<tr class="row" style="background-color: whitesmoke;">
@@ -136,7 +121,7 @@ include('conn.php'); ?>
 			<div class="col-5" align="right">
 				<!-- Total:- <i class="fas fa-rupee-sign"></i> <?php echo $final; ?> -->
 			</div>
-			<div class="col-7"><input class="btn btn-success col-12" type="submit" onclick="window.location='buy.php'"; value="Buy Now"></div>
+			<div class="col-7"><input class="btn btn-success col-12" type="submit" onclick="window.location='buy.php'" ; value="Buy Now"></div>
 		</div>
 <?php
 								}

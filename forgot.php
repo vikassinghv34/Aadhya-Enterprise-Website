@@ -47,7 +47,7 @@ if(isset($_POST['submit']))
 <body>
     <div class="container bg-light mt-5 mb-5" style=" padding:40px; border-radius:25px;">
 
-        <h2><strong><u>Checkout Form</u></strong></h2>
+        <h2><strong><u>Reset Password</u></strong></h2>
         <hr>
         <form action="" method="POST" class="needs-validation" novalidate>
             <!-- <div class="message" style="color: red; font-weight:bold;">

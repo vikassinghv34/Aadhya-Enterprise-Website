@@ -1,5 +1,34 @@
 <?php
-include('header.php'); ?>
+include('header.php');
+include('conn.php');
+
+
+if (isset($_POST['signup'])) {
+  $email = mysqli_real_escape_string($conn, $_POST['email']);
+  $name = mysqli_real_escape_string($conn, $_POST['name']);
+  $comment = mysqli_real_escape_string($conn, $_POST['message']);
+
+  if(isset($_SESSION['id'])){
+    $uid=$_SESSION['id'];
+    $query = mysqli_query($conn, "INSERT INTO feedback(UserEmail,UserName,Comment,UserID) VALUES('$email','$name','$comment','$uid')");
+  }else{
+  $query = mysqli_query($conn, "INSERT INTO feedback(UserEmail,UserName,Comment) VALUES('$email','$name','$comment')");
+  }
+  if ($query) {
+?>
+    <script>
+      alert('Thank you for your Feedback');
+
+      location.replace("home.php");
+    </script>
+
+  }
+<?php
+  }
+  mysqli_close($conn);
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,30 +38,31 @@ include('header.php'); ?>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <style>
-      .path a:hover {
-      color: black;
-      text-decoration: none;
-    }
+  .path a:hover {
+    color: black;
+    text-decoration: none;
+  }
 
-    .path a {
-      color: gray;
-    }
+  .path a {
+    color: gray;
+  }
 
-    .path .less {
-      color: gray;
-      font-weight: bolder;
-      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    }
+  .path .less {
+    color: gray;
+    font-weight: bolder;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
 </style>
+
 <body style="background-color: lightgray;">
-<div class="container-fluid path">
+  <div class="container-fluid path">
     <a href="home.php">Home</a> <label for="" class="less">></label>
     <a href="contact.php">Contact US</a>
   </div>
   <div class="container bg-light mt-5 mb-5" style="height:40rem; padding:40px; border-radius:25px;">
     <h2><strong><u>Contact Us</u></strong></h2>
     <hr>
-    <form action="/action_page.php" class="needs-validation" novalidate>
+    <form action="" method="POST" class="needs-validation" novalidate>
       <div class="form-group">
         <label for="email">Email:</label>
         <input type="text" class="form-control" id="email" pattern="^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*$" placeholder="Enter Email" name="email" required autofocus>
@@ -53,7 +83,7 @@ include('header.php'); ?>
         <div class="invalid-feedback">Please enter valid Input.</div>
       </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" name="signup" value="Submit">Submit</button>
     </form>
   </div>
   <?php include('footer.php'); ?>

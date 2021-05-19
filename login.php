@@ -18,23 +18,21 @@ if (isset($_POST['submit'])) {
     $_SESSION['email'] = $row['UserEmail'];
     $_SESSION['name'] = $row['UserFirstName'];
     // header('Location:home.php');
+    if($row['UserType'] === 'admin'){
+      ?>
+      <script>
+        // location.replace("home.php");
+        alert('admin');
+      </script>
+  <?php
+    }else{
 ?>
     <script>
       location.replace("home.php");
     </script>
 <?php
-  }
-
-
-  // $row=mysqli_fetch_array($result);
-  // if(is_array($row))
-  // {
-  //     // $_SESSION['ID']=$row['id'];
-  // $_SESSION['user']=$row['mail'];
-  // $_SESSION['Name']=$row['name'];
-  //$_SESSION['type']=$row['type'];
-  // }
-  else {
+    }
+  } else {
     $message = "invalid username or password";
   }
 }
@@ -91,7 +89,7 @@ if (isset($_POST['submit'])) {
           if (isset($_SESSION['msg'])) {
             echo $_SESSION['msg'];
           } else {
-            $_SESSION['msg'] = "You are logged out, please login again";
+            // $_SESSION['msg'] = "You are logged out, please login again";
           }
           ?>
         </p>

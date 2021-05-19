@@ -6,21 +6,6 @@ include_once('conn.php');
 <html lang="en">
 
 <head>
-    <script>
-        function addtocart(id, quantity, price, name) {
-            try {
-                fetch("addtocart.php?id=" + id + "&quantity=" + quantity + "&price=" + price + "&name=" + name).then(function(respone) {
-                    if (respone.ok) {
-                        console.log('done');
-                        window.location="unset.php";
-                    }
-                    console.log(id);
-                });
-            } catch (id) {
-                console.log(id);
-            }
-        }
-    </script>
     <style>
         .row {
             padding: 5px;
@@ -59,12 +44,12 @@ include_once('conn.php');
     </div>
     <div class="container mt-3 mb-5" align="center">
         <?php
-        if(isset($_SESSION["searchid"])){
-            $id=$_SESSION["searchid"];
-        }
-        else{
         $id = $_GET['ProductID'];
-        }
+        $uid = $_SESSION['id'];
+
+        $qry = mysqli_query($conn, "select * from cartdetails where ProductID='$id'"); // select query
+        $qty = mysqli_fetch_array($qry); // fetch data
+
         $sql = "SELECT * FROM products Where ProductID=$id";
         $result = mysqli_query($conn, $sql);
         if (!$result) {
@@ -77,75 +62,139 @@ include_once('conn.php');
             $pdts = $result->fetch_assoc();
 
         ?>
-                <div class="row">
-                    <div class="col-md-12" align="center">
-                        <img src="<?php echo $pdts["ProductImage"] ?>" style="height: 550px;" alt="" width="80%">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2><?php echo $pdts["ProductName"]?></h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4><i class="fas fa-rupee-sign"></i> <?php echo $pdts["ProductPrice"] ?></h4>
-                    </div>
-                </div>
-                <form action="" method="post">
-                <div class="row">
-                    <div class="col-md-12">
-                        Quantity: <input type="number" name="quantity" id="quantity" placeholder="1" required />
-                    </div>
-                </div>
-                
-                </form>
-                <div class="row">
-                    <div class="col-md-12">
-                        <a href="" onclick='addtocart("<?php echo $pdts["ProductID"] ?>","<?php echo $pdts["ProductQuantity"] ?>","<?php echo $pdts["ProductPrice"] ?>","<?php echo $pdts["ProductName"] ?>");' class="btn btn-primary">Add to Cart</a>
-                        <a href='buy.php' class="btn btn-success">Buy Now</a>
-                    </div>
-                </div>
-                <div id="accordion" class="mt-2" align="left">
-                    <div class="card">
-                        <div class="card-header" align="center">
-                            <a class="card-link active" data-toggle="collapse" href="#collapseOne">
-                                Details
-                            </a>
-                            <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                                Specification
-                            </a>
-                            <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-                                Vendor
-                            </a>
+            <form action="" method="post">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-12 card-img-top" align="center">
+                            <img src="<?php echo $pdts["ProductImage"] ?>" style="height: 250px;" alt="" width="50%">
                         </div>
-                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php echo $pdts["ProductCartDesc"] ?>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 " align="center">
+                                <h2><input type="text" class="card-text" size="50" style="text-align: center; border:none;outline:none" name="name" value="<?php echo $pdts["ProductName"] ?>" readonly> </h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4><input type="text" name="price" style="text-align: center;border:none; outline:none" value="<?php echo $pdts["ProductPrice"] ?>" readonly></h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" align="center">
+                                Quantity: <input type="number" name="quantity" min="1" id="quantity" value="<?php echo $pdts['ProductQuantity'] ?>" placeholder="1" required />
+                                <!-- <small><input class="btn-success" type="submit" name="update" value="Change"></small> -->
                             </div>
                         </div>
 
-
-                        <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php echo $pdts["ProductShortDesc"] ?>
-                        </div>
-                        </div>
-
-
-                        <div id="collapseThree" class="collapse" data-parent="#accordion">
-                            <div class="card-body">
-                                <li>Finolex Pvt. Ltd.</li>
-                                <li>Duke Pipes Pvt. Ltd.</li>
-
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="submit" class="btn btn-primary" name="cart" value="Add to Cart">
+                                <input type="submit" name="buy" class="btn btn-success" value="Buy Now">
                             </div>
-
                         </div>
                     </div>
                 </div>
-        <?php
+            </form>
+            <?php
+            if (isset($_POST['cart'])) // when click on cart button
+            {
+                $quantity = $_POST['quantity'];
+                // $pid = $_POST['pid'];
+                $price = $_POST['price'];
+                $name = $_POST['name'];
+                $res = mysqli_query($conn, "SELECT * FROM cartdetails WHERE UserID='$uid' AND ProductID='$id'");
+                $row = mysqli_num_rows($res);
+
+                if ($row === 0) {
+                    $sql = "INSERT INTO `cartdetails`(`ProductID`, `UserID`,`ProductQuantity`,`ProductPrice`,`ProductName`) VALUES ('$id','$uid','$quantity','$price','$name')";
+                    $query = mysqli_query($conn, $sql);
+                    if ($query) {
+            ?>
+                        <script>
+                            window.location = "cart.php";
+                        </script>
+                    <?php
+                    }
+                } else {
+                    ?>
+                    <script>
+                        alert('<?php echo $name ?> is already in the cart');
+                    </script>
+            <?php
+                    exit();
+                }
             }
-        
+            if (isset($_POST['buy'])) // when click on buy now button
+            {
+                $quantity = $_POST['quantity'];
+                // $pid = $_POST['pid'];
+                $price = $_POST['price'];
+                $name = $_POST['name'];
+                $res = mysqli_query($conn, "SELECT * FROM cartdetails WHERE UserID='$uid' AND ProductID='$id'");
+                $row = mysqli_num_rows($res);
+
+                if ($row === 0) {
+                    $sql = "INSERT INTO `cartdetails`(`ProductID`, `UserID`,`ProductQuantity`,`ProductPrice`,`ProductName`) VALUES ('$id','$uid','$quantity','$price','$name')";
+                    $query = mysqli_query($conn, $sql);
+                    if ($query) {
+            ?>
+                        <script>
+                            window.location = "buy.php";
+                        </script>
+                    <?php
+                    }
+                } else {
+                    ?>
+                    <script>
+                        alert('<?php echo $name ?> is already in the cart');
+                    </script>
+            <?php
+                    exit();
+                }
+            }
+            
+            ?>
+            <div id="accordion" class="mt-2" align="left">
+                <div class="card">
+                    <div class="card-header" align="center">
+                        <a class="card-link active" data-toggle="collapse" href="#collapseOne">
+                            Details
+                        </a>
+                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                            Specification
+                        </a>
+                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+                            Vendor
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php echo $pdts["ProductCartDesc"] ?>
+                        </div>
+                    </div>
+
+
+                    <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php echo $pdts["ProductShortDesc"] ?>
+                        </div>
+                    </div>
+
+
+                    <div id="collapseThree" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            <li>Finolex Pvt. Ltd.</li>
+                            <li>Duke Pipes Pvt. Ltd.</li>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        <?php
+        }
+
         ?>
     </div>
 </body>

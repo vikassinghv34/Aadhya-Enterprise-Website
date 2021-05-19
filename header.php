@@ -58,11 +58,11 @@
         color: #ddd;
     }
 
-    .hr {
+    /* .hr {
         height: 2px;
         background-color: Blue;
         width: auto;
-    }
+    } */
 
     .dropdown-item {
         margin: 0;
@@ -132,23 +132,23 @@
                     Products
                 </a>
                 <div class="dropdown-menu mt-0 bg-primary">
-                    <a class="dropdown-item" href="products.php?ProductCategoryID=1">Plumbing</a>
+                    <a class="dropdown-item" href="products.php?ProductCategoryID=1"><strong>Plumbing</strong></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="products.php?ProductCategoryID=2">Industrial</a>
+                    <a class="dropdown-item" href="products.php?ProductCategoryID=2"><strong>Industrial</strong></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="products.php?ProductCategoryID=3">Agricultural</a>
+                    <a class="dropdown-item" href="products.php?ProductCategoryID=3"><strong>Agricultural</strong></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="products.php?ProductCategoryID=4">Surface Drainage</a>
+                    <a class="dropdown-item" href="products.php?ProductCategoryID=4"><strong>Surface Drainage</strong></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="products.php?ProductCategoryID=5">Sewerage & Drainage</a>
+                    <a class="dropdown-item" href="products.php?ProductCategoryID=5"><strong>Sewerage & Drainage</strong></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="products.php?ProductCategoryID=6">Fire Protection</a>
+                    <a class="dropdown-item" href="products.php?ProductCategoryID=6"><strong>Fire Protection</strong></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="products.php?ProductCategoryID=7">Insulation</a>
+                    <a class="dropdown-item" href="products.php?ProductCategoryID=7"><strong>Insulation</strong></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="products.php?ProductCategoryID=8">Cable Pretection</a>
+                    <a class="dropdown-item" href="products.php?ProductCategoryID=8"><strong>Cable Pretection</strong></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="products.php?ProductCategoryID=9">Urban Infrastructure</a>
+                    <a class="dropdown-item" href="products.php?ProductCategoryID=9"><strong>Urban Infrastructure</strong></a>
                 </div>
             </li>
 
