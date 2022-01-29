@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Bootstrap Example</title>
+    <title>Aadhya Enterprise</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -66,6 +66,7 @@
 
     .dropdown-item {
         margin: 0;
+        color: whitesmoke;
     }
 
     .dropdown-divider {
@@ -110,14 +111,15 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <!-- Brand -->
-        <a class="navbar-brand" href="home.php"><strong>AaDhYa EnTeRpRiSe</strong></a>
-
+        <!-- <div class="row"> -->
+        <a class="navbar-brand" href="index.php"><h3><strong>A</strong>adhya <strong>E</strong>nterprise</h3></a>
+        <!-- </div> -->
         <!-- Links -->
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" href="home.php">Home</a>
+                <a class="nav-link active" href="index.php">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="about.php">About Us</a>
@@ -128,7 +130,7 @@
 
             <!-- Dropdown -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" style="cursor: pointer;" onclick="window.location='http://localhost/code/SEM%206/testing/bs4/products.php'" id="navbardrop" data-toggle="dropdown">
+                <a class="nav-link dropdown-toggle" style="cursor: pointer;" onclick="window.location='products.php'" id="navbardrop" data-toggle="dropdown">
                     Products
                 </a>
                 <div class="dropdown-menu mt-0 bg-primary">
