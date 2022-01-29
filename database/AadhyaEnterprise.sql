@@ -206,12 +206,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserId`, `UserEmail`, `UserPassword`, `UserFirstName`, `UserLastName`, `UserAddress`, `UserAddress2`, `UserCity`, `UserState`, `UserZip`, `UserCountry`, `UserPhone`, `UserEmailVerified`, `UserPaymentMethod`, `UserRegistrationDate`, `UserIP`, `UserType`, `UserVerificationCode`) VALUES
-(2, 'vikassinghvv34@gmail.com', 'Vikas@123', 'Admin', 'singh', 'Makarpura ', '', 'Ahmedabad', 'Gujarat', '390014', NULL, '1234567890', 'active', 'cash on delivery', NULL, NULL, 'admin', 'a654va6e84e8wc568ew4f651cs85'),
+(2, 'vikassinghvv34@gmail.com', 'xyz@123', 'Admin', 'singh', 'pura ', '', 'Ahmedabad', 'Gujarat', '390014', NULL, '1234567890', 'active', 'cash on delivery', NULL, NULL, 'admin', 'a654va6e84e8wc568ew4f651cs85'),
 (3, 'ishavaghera@gmail.com', 'Isha@123', 'Ishaa', 'Vaghera', '', NULL, NULL, NULL, NULL, NULL, '7418529630', 'inactive', '', NULL, NULL, NULL, NULL),
 (4, 'jhinga@123.com', 'Jhinga@123', 'jhinga', 'kushwaha', '', NULL, NULL, NULL, NULL, NULL, '2583691470', 'active', '', NULL, NULL, NULL, NULL),
-(12, 'vikassinghv34@gmail.com', 'Vikas@123', 'vikas', 'singh', 'makarpuraa', '', 'Vadodara', 'Gujarat', '930041', NULL, '8521364973', 'active', 'cash on delivery', NULL, NULL, NULL, '02bc87ae9a1bc52e82c0fcfb330942'),
-(17, 'amitsinghsa26@gmail.com', '', 'Amit Singh', '', 'makarpura', NULL, NULL, NULL, NULL, NULL, '8401385969', NULL, '', NULL, NULL, NULL, NULL),
-(18, 'rajendrasinghsa26@gmail.com', 'Vikas@123', 'vikas', 'singh', '', NULL, NULL, NULL, NULL, NULL, '7531234560', 'inactive', '', NULL, NULL, NULL, '85e7221fd33a06fd5c0b1853a443fb');
+(12, 'vikassinghv34@gmail.com', 'xyzs@123', 'vikas', 'singh', 'puraa', '', 'Vadodara', 'Gujarat', '930041', NULL, '8521364973', 'active', 'cash on delivery', NULL, NULL, NULL, '02bc87ae9a1bc52e82c0fcfb330942'),
+(17, 'amitsinghsa26@gmail.com', '', 'Amit Singh', '', 'pura', NULL, NULL, NULL, NULL, NULL, '1234567895', NULL, '', NULL, NULL, NULL, NULL),
+(18, 'rajendrasinghsa26@gmail.com', 'xyz@123', 'vikas', 'singh', '', NULL, NULL, NULL, NULL, NULL, '7531234560', 'inactive', '', NULL, NULL, NULL, '85e7221fd33a06fd5c0b1853a443fb');
 
 --
 -- Indexes for dumped tables
