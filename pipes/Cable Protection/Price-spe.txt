@@ -1,0 +1,23 @@
+Metalic Cable Protection Galvanised steel cable
+price-920
+spe-The SC galvanised steel cable protection conduit offers very high compression, impact and tensile strength and is very flexible.
+
+../pipes/Cable Protection/
+
+Non-Metalic Cable Protection HG_DC Double slit
+Price-489
+spe-
+Control panels, machine building, plant construction and wherever retrofitting is a requirement.
+
+
+Non-Metalic cable protection HG-SW PA6 Standard
+price-1245
+spe-
+The HG-SW cable protection conduit provides very good resistance to abrasion, compression and impact, is highly flexible and has high fatigue-life
+
+
+
+SPS-series cable protection spiral binding
+Price-630
+spe-
+ SPS is available with much larger diameters (up to 50 mm) than other spiral binding and is ideal for larger cable bundles.
